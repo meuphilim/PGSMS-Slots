@@ -1,11 +1,11 @@
 {
   "Serviços Disponíveis": [
     {
-      "slot": "www.terra.com.br",
+      "slot": "https://www.terra.com.br",
       "name": "Terra"
     },
     {
-      "slot": "www.uol.com",
+      "slot": "https://www.uol.com",
       "name": "Uol"
     }
   ]
