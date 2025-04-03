@@ -1,12 +1,4 @@
-{
-  "Serviços Disponíveis": [
-    {
-      "slot": "https://www.terra.com.br",
-      "name": "Terra"
-    },
-    {
-      "slot": "https://www.uol.com",
-      "name": "Uol"
-    }
-  ]
-}
+[
+    {"name": "KT-Slots", "slot": "https://stslots.com"},
+    {"name": "Riqueza Slots", "slot": "https://riquezaslotsi.com"}
+]
