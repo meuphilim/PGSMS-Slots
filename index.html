@@ -2,23 +2,25 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Seu IP Público</title>
+  <title>Localização do Meu IP</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to right, #e0eafc, #cfdef3);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      height: 100vh;
+      background: #eef1f7;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      padding: 40px 20px;
     }
 
     .mac-window {
       background-color: #fff;
       border-radius: 12px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-      width: 400px;
+      width: 90%;
+      max-width: 700px;
       overflow: hidden;
     }
 
@@ -47,20 +49,23 @@
     .green { background-color: #00ca4e; }
 
     .content {
-      padding: 30px;
+      padding: 20px;
       text-align: center;
     }
 
-    .content h1 {
+    #ip {
       font-size: 22px;
-      color: #333;
-      margin-bottom: 15px;
+      margin: 10px 0;
     }
 
-    #ip {
-      font-size: 28px;
-      font-weight: bold;
-      color: #222;
+    #location {
+      color: #555;
+      font-size: 16px;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
     }
   </style>
 </head>
@@ -74,20 +79,40 @@
       </div>
     </div>
     <div class="content">
-      <h1>Seu IP Público</h1>
-      <p id="ip">Carregando...</p>
+      <h1>Localização do Seu IP</h1>
+      <p id="ip">Carregando IP...</p>
+      <p id="location">Carregando localização...</p>
     </div>
+    <div id="map"></div>
   </div>
 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    fetch("https://api.ipify.org?format=json")
+    fetch("https://ipapi.co/json/")
       .then(response => response.json())
       .then(data => {
-        document.getElementById("ip").textContent = data.ip;
+        const ip = data.ip;
+        const city = data.city;
+        const region = data.region;
+        const country = data.country_name;
+        const lat = data.latitude;
+        const lon = data.longitude;
+
+        document.getElementById("ip").textContent = `Seu IP: ${ip}`;
+        document.getElementById("location").textContent = `${city}, ${region}, ${country}`;
+
+        // Mapa com Leaflet
+        const map = L.map('map').setView([lat, lon], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([lat, lon]).addTo(map)
+          .bindPopup(`<b>Você está aqui!</b><br>${city}, ${region}`)
+          .openPopup();
       })
       .catch(error => {
-        document.getElementById("ip").textContent = "Erro ao obter IP.";
-        console.error("Erro ao buscar IP:", error);
+        document.getElementById("location").textContent = "Erro ao obter localização.";
+        console.error("Erro:", error);
       });
   </script>
 </body>
