@@ -1,0 +1,14 @@
+[
+  {
+    "api_name": "SMS-Activate",
+    "api_url": "https://api.sms-activate.ae/stubs/handler_api.php"
+  },
+  {
+    "api_name": "SMS Bower",
+    "api_url": "https://smsbower.online/stubs/handler_api.php"
+  },
+  {
+    "api_name": "Tiger SMS",
+    "api_url": "https://api.tiger-sms.com/stubs/handler_api.php"
+  }
+]
