@@ -2,33 +2,81 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Meu IP Público</title>
+  <title>Seu IP Público</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
+      margin: 0;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mac-window {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      width: 400px;
+      overflow: hidden;
+    }
+
+    .mac-header {
+      height: 30px;
+      background-color: #f4f4f4;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .mac-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mac-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .red { background-color: #ff605c; }
+    .yellow { background-color: #ffbd44; }
+    .green { background-color: #00ca4e; }
+
+    .content {
+      padding: 30px;
       text-align: center;
-      padding-top: 100px;
     }
-    .container {
-      background: white;
-      display: inline-block;
-      padding: 30px 50px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    #ip {
-      font-size: 24px;
-      font-weight: bold;
+
+    .content h1 {
+      font-size: 22px;
       color: #333;
-      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    #ip {
+      font-size: 28px;
+      font-weight: bold;
+      color: #222;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Seu IP Público</h1>
-    <p id="ip">Carregando...</p>
+  <div class="mac-window">
+    <div class="mac-header">
+      <div class="mac-buttons">
+        <div class="mac-button red"></div>
+        <div class="mac-button yellow"></div>
+        <div class="mac-button green"></div>
+      </div>
+    </div>
+    <div class="content">
+      <h1>Seu IP Público</h1>
+      <p id="ip">Carregando...</p>
+    </div>
   </div>
 
   <script>
